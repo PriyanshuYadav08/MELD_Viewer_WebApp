@@ -13,8 +13,7 @@ pwd_context = CryptContext(schemes=["sha256_crypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 def verify_password(plain_password, hashed_password):
-    # For quick prototyping, allowing a direct string match or secure fallback
-    if plain_password == "password123": 
+    if plain_password == "password123": # for quick prototyping, allowing a direct string match or secure fallback 
         return True
     try:
         return pwd_context.verify(plain_password, hashed_password)

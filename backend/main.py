@@ -40,19 +40,16 @@ async def upload_scan(
     scan_id = str(uuid.uuid4())
     file_extension = os.path.splitext(file.filename)[1] if file.filename else ".dcm"
     
-    # Handle composite extensions like .nii.gz safely
-    if file.filename and file.filename.endswith(".nii.gz"):
+    if file.filename and file.filename.endswith(".nii.gz"): # to composite extensions like .nii.gz safely
         file_extension = ".nii.gz"
 
     saved_file_name = f"{scan_id}{file_extension}"
     file_path = os.path.join("uploads", saved_file_name)
     
-    # Save incoming payload stream to disk surface
-    with open(file_path, "wb") as buffer:
+    with open(file_path, "wb") as buffer: # saving incoming payload stream to disk surface
         buffer.write(await file.read())
 
-    # Initialize tracking data block
-    SCANS_DB[scan_id] = {
+    SCANS_DB[scan_id] = { # initializing tracking data block
         "id": scan_id,
         "filename": file.filename,
         "extension": file_extension,
@@ -61,8 +58,7 @@ async def upload_scan(
         "output_views": None
     }
 
-    # Offload execution tracking to background threads safely
-    background_tasks.add_task(run_meld_pipeline, scan_id, file_path)
+    background_tasks.add_task(run_meld_pipeline, scan_id, file_path) # offloading execution tracking to background threads safely
     
     return SCANS_DB[scan_id]
 
