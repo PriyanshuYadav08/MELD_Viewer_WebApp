@@ -1,0 +1,31 @@
+.viewer-page {
+  padding: 2rem;
+}
+
+.viewer-container {
+  display: flex;
+
+  gap: 1rem;
+
+  margin-top: 2rem;
+}
+
+.viewer-panel {
+  flex: 1;
+
+  height: 350px;
+
+  background: #0f172a;
+
+  color: white;
+
+  border-radius: 16px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 1.2rem;
+}
