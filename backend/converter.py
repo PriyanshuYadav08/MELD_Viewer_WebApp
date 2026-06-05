@@ -49,7 +49,7 @@ def convert_using_bidscoin(dicom_dir: str, bids_output_dir: str):
         print(e)
 
 if __name__ == "__main__":
-    INPUT_DICOM_FOLDER = "uploads/dicom_raw"
+    INPUT_DICOM_FOLDER = "uploads"
     OUTPUT_NIFTI_FOLDER = "uploads/nifti_outputs"
     
     Path(INPUT_DICOM_FOLDER).mkdir(parents=True, exist_ok=True)
